@@ -1,6 +1,5 @@
 class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
-        nums = list(nums)
         result = []
         for i in range(len(l)):
             is_arith = True
