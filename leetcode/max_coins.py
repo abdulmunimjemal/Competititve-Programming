@@ -1,3 +1,17 @@
+# Improved Time Complexity Solution - Aug 16
+
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        piles.sort()
+        total_coins = 0
+        n = len(piles)
+        for i in range(n//3, n, 2):
+            total_coins += piles[i]
+        return total_coins
+
+
+# PREVIOUS SOLUTIONS
+
 class Solution:
     def maxCoins(self, piles: List[int]) -> int:
         third = len(piles) // 3
