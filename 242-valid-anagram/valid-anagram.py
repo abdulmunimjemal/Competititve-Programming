@@ -8,9 +8,9 @@ class Solution(object):
         if len(s) != len(t):
             return False
         # using dictionary to keep number
-        freq_s = Counter(s)
-        freq_t = Counter(t)
-        return freq_s == freq_t
-        
-        return 
+        alphabet = {letter: 0 for letter in string.ascii_lowercase}
+        for i in range(len(s)):
+            alphabet[s[i]] += 1
+            alphabet[t[i]] -= 1
+        return not any(alphabet.values())
         
