@@ -1,12 +1,8 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hash_table = dict()
+        hash_table = defaultdict(list)
         for s in strs:
-            freq = Counter(s)
-            hashable_freq = tuple(sorted(freq.items()))
-            if hashable_freq in hash_table:
-                hash_table[hashable_freq].append(s)
-            else:
-                hash_table[hashable_freq] = [s]
+            sorted_word = ''.join(sorted(list(s)))
+            hash_table[sorted_word].append(s)
         return hash_table.values()
             
