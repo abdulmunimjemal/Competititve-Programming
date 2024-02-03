@@ -1,10 +1,7 @@
-class Solution(object):
-    def isPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        s = re.sub("[^a-zA-Z0-9]+", "", s).lower()
-        
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        # remove everything
+        s = s.lower()
+        s = re.sub(r"[^a-z0-9]+", '', s)
         return s == s[::-1]
         
