@@ -1,18 +1,26 @@
-class Solution(object):
-    def productExceptSelf(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        # using prefix sum
-        n = len(nums)
-        left_product = [1]*n
-        right_product = [1]*n
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        max_product = 1
+        zero_indexes = []
+        for i in range(len(nums)):
+            num = nums[i]
+            if num != 0: 
+                max_product *= num
+            else:
+                zero_indexes.append(i)
+        result = []
+        for i in range(len(nums)):
+            number = nums[i]
+            if number != 0:
+                if zero_indexes:
+                    result.append(0)
+                else:
+                    result.append(max_product//number)
+            else:
+                if len(zero_indexes) > 1:
+                    result.append(0)
+                else:
+                    result.append(max_product)
+        return result
 
-        # let us calculate the left product
-        for i in range(1, n):
-            left_product[i] = left_product[i-1] * nums[i-1]
         
-        for j in range(n-2,-1,-1):
-            right_product[j] = right_product[j+1] * nums[j+1]
-        return [left_product[i] * right_product[i] for i in range(n)]
