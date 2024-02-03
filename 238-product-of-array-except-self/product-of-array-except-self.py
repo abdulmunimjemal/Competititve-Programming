@@ -15,6 +15,4 @@ class Solution(object):
         
         for j in range(n-2,-1,-1):
             right_product[j] = right_product[j+1] * nums[j+1]
-        print(left_product)
-        print(right_product)
         return [left_product[i] * right_product[i] for i in range(n)]
