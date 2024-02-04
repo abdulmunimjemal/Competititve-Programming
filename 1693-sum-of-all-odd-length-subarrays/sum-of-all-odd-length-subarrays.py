@@ -1,6 +1,10 @@
 class Solution:
     def sumOddLengthSubarrays(self, arr: List[int]) -> int:
         step, n, total = 1, len(arr), 0
+
+        if n <= 2:
+            return sum(arr)
+
         prefix_sum = [0] * n
         for i in range(n):
             total += arr[i]
