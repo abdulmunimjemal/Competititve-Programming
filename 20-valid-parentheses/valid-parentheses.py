@@ -8,9 +8,8 @@ class Solution:
         }
         for i in s:
             if i in ['(','{','[']:
-                stack.append(i)
+                stack.append(vocab[i])
             else:
-                if not stack: return False
-                if vocab[stack.pop()] != i: return False
+                if not stack or stack.pop() != i: return False
         return not stack
         
