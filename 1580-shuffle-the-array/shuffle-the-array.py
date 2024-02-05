@@ -1,13 +1,11 @@
 class Solution:
     def shuffle(self, nums: List[int], n: int) -> List[int]:
-        result = [0]*(2*n)
-        curr = 0
-        for i in range(n):
-            result[curr] = nums[i]
-            curr+=1
-            result[curr] = nums[i+n]
-            curr+=1
+        # two pointers
+        array_1 = nums[:n]
+        array_2 = nums[n:]
+
+        result = []
+        for i in range(len(array_1)):
+            result.append(array_1[i])
+            result.append(array_2[i])
         return result
-
-
-        
