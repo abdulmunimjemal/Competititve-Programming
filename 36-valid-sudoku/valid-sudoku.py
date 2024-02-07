@@ -19,9 +19,8 @@ class Solution:
                 column.add(val)
     
         # check 3 by 3 grid
-        # vertically dow first
-        for j in range(0,7,3):
-            for i in range(0,7,3):
+        for j in range(0,9,3):
+            for i in range(0,9,3):
                 unique = set()
                 for k in range(i,i+3):
                     for l in range(j, j+3):
