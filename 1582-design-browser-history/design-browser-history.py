@@ -6,21 +6,17 @@ class BrowserHistory:
         self.current_length = len(self.history)
 
     def visit(self, url: str) -> None:
-        self.history.insert(self.current_index+1,url)
         self.current_index += 1
+        self.history.insert(self.current_index,url)
         self.current_length = self.current_index + 1
         
     def back(self, steps: int) -> str:
-        n = self.current_index - steps
-        new_place =  max(n, 0)
-        self.current_index = new_place
+        self.current_index =  max(self.current_index - steps, 0)
         return self.history[self.current_index]
     
     def forward(self, steps: int) -> str:
-         n = self.current_index + steps
-         new_place = min(self.current_length-1, n)
-         self.current_index = new_place
-         return self.history[self.current_index]
+        self.current_index = min(self.current_length-1, self.current_index + steps)
+        return self.history[self.current_index]
         
 
 
