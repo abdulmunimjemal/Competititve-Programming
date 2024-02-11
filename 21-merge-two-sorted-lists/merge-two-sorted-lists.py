@@ -21,5 +21,4 @@ class Solution:
 
         if list_2:
             head.next = list_2
-            
         return result.next
