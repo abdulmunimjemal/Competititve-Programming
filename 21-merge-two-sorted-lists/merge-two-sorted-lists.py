@@ -16,10 +16,10 @@ class Solution:
             else:
                 head.next, list_1 = list_1, list_1.next
                 head = head.next
-        while list_1:
-            head.next, list_1 = list_1, list_1.next
-            head = head.next
-        while list_2:
-            head.next, list_2 = list_2, list_2.next
-            head = head.next
+        if list_1:
+            head.next = list_1
+
+        if list_2:
+            head.next = list_2
+            
         return result.next
