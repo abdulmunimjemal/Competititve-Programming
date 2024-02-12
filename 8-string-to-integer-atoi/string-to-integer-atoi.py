@@ -1,17 +1,33 @@
 class Solution:
     def myAtoi(self, s: str) -> int:
-        s = s.lstrip() 
+        INT_MAX = 2**31 - 1
+        INT_MIN = -2**31
+        
+        # Remove leading and trailing whitespace
+        s = s.strip()
         if not s:
             return 0
+        
+        # Handle sign
         sign = 1
-        i = 0
-        if s[0] == '-': # negative sign
+        if s[0] == '-':
             sign = -1
-            i = 1
+            s = s[1:]  # Skip the sign character
         elif s[0] == '+':
-            i = 1
+            s = s[1:]  # Skip the sign character
+        
+        # Convert characters to integer
         result = 0
-        while i < len(s) and s[i].isdigit():
-            result = result * 10 + int(s[i])
-            i += 1
-        return max(-2**31, min(sign * result, 2**31 - 1))
+        for char in s:
+            if not char.isdigit():
+                break  # Stop at the first non-digit character
+            result = result * 10 + int(char)
+        
+        # Apply sign and check integer limits
+        result *= sign
+        if result > INT_MAX:
+            return INT_MAX
+        elif result < INT_MIN:
+            return INT_MIN
+        else:
+            return result
