@@ -1,16 +1,18 @@
 class Solution:
     def countStudents(self, students: List[int], sandwiches: List[int]) -> int:
-        skipped = 0
         sandwiches = deque(sandwiches)
         students = deque(students)
+        counter = 0
         while students:
-            if len(students) == skipped: return skipped
+            if len(students) == counter: return counter
+
             if students[0] == sandwiches[0]:
                 students.popleft()
                 sandwiches.popleft()
-                skipped = 0
+                counter = 0
             else:
                 students.append(students.popleft())
-                skipped += 1
+                counter += 1
+
         return 0
         
