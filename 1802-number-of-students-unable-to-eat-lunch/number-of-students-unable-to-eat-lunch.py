@@ -3,8 +3,7 @@ class Solution:
         skipped = 0
         sandwiches = deque(sandwiches)
         students = deque(students)
-        while students:
-            if len(students) == skipped: break
+        while students and len(students) != skipped:
             if students[0] == sandwiches[0]:
                 students.popleft()
                 sandwiches.popleft()
@@ -13,4 +12,3 @@ class Solution:
                 students.append(students.popleft())
                 skipped += 1
         return skipped
-        
