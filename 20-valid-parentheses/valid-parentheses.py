@@ -1,15 +1,15 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        vocab = {
-            '(': ')',
-            '{': '}',
-            '[': ']'
+        db = {
+            ')':'(',
+            '}':'{',
+            ']': '['
         }
+        stack = []
         for i in s:
-            if i in ['(','{','[']:
-                stack.append(vocab[i])
+            if i in db.values():
+                stack.append(i)
             else:
-                if not stack or stack.pop() != i: return False
+                if not stack or stack.pop() != db[i]: return False
         return not stack
         
