@@ -1,14 +1,9 @@
-class Solution(object):
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
-        pointer = 0      
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        a = 0
         for i in range(len(nums)):
             if nums[i] != val:
-                nums[pointer] = nums[i]
-                pointer += 1
-        return pointer
-        
+                nums[a], nums[i] = nums[i], nums[a]
+                a += 1
+        return a
+                
