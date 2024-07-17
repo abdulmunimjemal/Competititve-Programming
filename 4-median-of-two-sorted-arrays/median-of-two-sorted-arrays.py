@@ -18,8 +18,6 @@ class Solution:
             elif j < m:
                 m1 = nums2[j]
                 j += 1
-        print(m1)
-        print(m2)
 
         if (n + m) % 2 == 1:
             return m1
