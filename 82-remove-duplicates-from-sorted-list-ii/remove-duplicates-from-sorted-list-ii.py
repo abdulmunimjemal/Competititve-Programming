@@ -21,8 +21,7 @@ class Solution:
                 prev = prev.next
             
             curr = curr.next
-        return dummy.next
         
-
+        return dummy.next
 
         
