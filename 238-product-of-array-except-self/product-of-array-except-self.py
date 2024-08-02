@@ -1,24 +1,25 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        max_product = 1
+        non_zero_product = 1
+        number_of_zeros = 0
         zero_indexes = []
         for i in range(len(nums)):
-            num = nums[i]
-            if num != 0: 
-                max_product *= num
+            if nums[i] != 0:
+                non_zero_product *= nums[i]
             else:
+                number_of_zeros += 1
                 zero_indexes.append(i)
-        result = []
+
+        answer = [0] * len(nums)
+        
+        if number_of_zeros > 1:
+            return answer
+        if number_of_zeros == 1:
+            answer[zero_indexes[0]] = non_zero_product
+            return answer
+
         for i in range(len(nums)):
-            number = nums[i]
-            if number != 0:
-                if zero_indexes:
-                    result.append(0)
-                else:
-                    result.append(max_product//number)
-            else:
-                if len(zero_indexes) > 1:
-                    result.append(0)
-                else:
-                    result.append(max_product)
-        return result
+            answer[i] = non_zero_product // nums[i]
+        return answer
+
+        
