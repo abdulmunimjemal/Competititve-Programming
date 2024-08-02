@@ -1,11 +1,9 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        hashmap = {}
+        hashmap = defaultdict(list)
         for s in strs:
-            key = ''.join(sorted(s))
-            if key not in hashmap:
-                hashmap[key] = []
-            hashmap[key].append(s)
+            sorted_s = ''.join(sorted(s))
+            hashmap[sorted_s].append(s)
         return hashmap.values()
 
 
